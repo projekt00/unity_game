@@ -52,3 +52,7 @@ ehthumbs.db
 Thumbs.db
 *.log
 /unity_game/Logs
+# Unity User Settings
+/UserSettings/
+### VSCode specific ###
+.vscode/
