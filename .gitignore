@@ -8,6 +8,17 @@
 [Oo]bj/
 [Tt]emp/
 [Uu]nityGenerated/
+# Unity build pipeline
+/[Bb]uilds/
+# Unity Crash Reports
+/[Cc]rash[Rr]eports/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+# Unity auto-generated files
+/[Aa]ssets/Plugins/Editor/JetBrains*
+# Ignore .lock file in Packages
+/[Pp]ackages/packages-lock.json
+
 # file on crash reports
 sysinfo.txt
 # Unity3D generated meta files
