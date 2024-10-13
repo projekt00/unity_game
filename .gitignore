@@ -56,3 +56,5 @@ Thumbs.db
 /UserSettings/
 ### VSCode specific ###
 .vscode/
+/unity_game/UserSettings
+/unity_game/Assets/TextMesh Pro
