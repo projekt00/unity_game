@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 720690512186039816}
   - component: {fileID: 3562105190663330771}
   - component: {fileID: 5177067896862540479}
+  - component: {fileID: -5761167969125087010}
   m_Layer: 0
-  m_Name: Movable object
+  m_Name: MovableObject
   m_TagString: Interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,3 +134,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5761167969125087010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550988616927550876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ca3c465d933ca4dbd78c5bfd999622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayDistance: 2
