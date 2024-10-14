@@ -8,17 +8,8 @@
 [Oo]bj/
 [Tt]emp/
 [Uu]nityGenerated/
-# Unity build pipeline
-/[Bb]uilds/
-# Unity Crash Reports
-/[Cc]rash[Rr]eports/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
-# Unity auto-generated files
-/[Aa]ssets/Plugins/Editor/JetBrains*
-# Ignore .lock file in Packages
-/[Pp]ackages/packages-lock.json
-
+/unity_game/UserSettings
+/unity_game/Assets/TextMesh Pro
 # file on crash reports
 sysinfo.txt
 # Unity3D generated meta files
@@ -52,9 +43,4 @@ ehthumbs.db
 Thumbs.db
 *.log
 /unity_game/Logs
-# Unity User Settings
-/UserSettings/
-### VSCode specific ###
-.vscode/
-/unity_game/UserSettings
-/unity_game/Assets/TextMesh Pro
+
