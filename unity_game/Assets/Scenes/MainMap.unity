@@ -123,7 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &36745953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6326279174329956964, guid: 0d2eb644e66ba054c94ace55f6a4fa8e, type: 3}
   m_PrefabInstance: {fileID: 5626685172632368708}
@@ -406,7 +405,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1785764930031958337, guid: b554ad9899686b1429f386aa21979b89, type: 3}
   m_PrefabInstance: {fileID: 362837769}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &312172357 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
   m_PrefabInstance: {fileID: 6405910555919538436}
@@ -7420,7 +7418,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &7401522147062032623
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -7838,3 +7835,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 1526508881}
   - {fileID: 1198737815}
+  - {fileID: 3997196082732004482}
+  - {fileID: 867621707}
