@@ -15,10 +15,12 @@ public class ObjectMover : MonoBehaviour
     private Vector3 initialRotation; // Store the starting rotation of the object
     private Tween currentTween; // Reference to the current animation
 
-    public void MoveToTarget()
-    {   
+    public void Start(){
         initialPosition = transform.position;
         initialRotation = transform.eulerAngles;
+    }
+    public void MoveToTarget()
+    {   
         // If there is an active tween, kill it before starting a new one
         if (currentTween != null && currentTween.IsPlaying())
         {

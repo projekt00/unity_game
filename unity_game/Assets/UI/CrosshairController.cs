@@ -14,8 +14,6 @@ public class CrosshairController : MonoBehaviour
     public float rayDistance = 2f;
     private bool holdingOnObject = false;
 
-    private string hoverInfo = null;
-
     private UniversalObjectController hittedObj;
     void Start()
     {
