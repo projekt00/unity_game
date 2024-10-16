@@ -11,6 +11,7 @@ public class CrosshairController : MonoBehaviour
     public Color interactColor = new Color(40f / 255f, 160f / 255f, 30f / 255f, 0.8f);
 
     public Text ObjectInfo;
+    public RectTransform background;
     public float rayDistance = 2f;
     private bool holdingOnObject = false;
 
@@ -31,6 +32,7 @@ public class CrosshairController : MonoBehaviour
                 if (hit.collider.CompareTag("Interactive")){
                     //Debug.Log("Interactive object");
                     hittedObj = hit.collider.GetComponent<UniversalObjectController>();
+                    background.gameObject.SetActive(true);
                     ObjectInfo.text = hittedObj.mouseHoverInfo;
                     Crosshair.color = interactColor;
 
@@ -44,15 +46,18 @@ public class CrosshairController : MonoBehaviour
                     }
                 } else {
                     //Debug.Log("Object");
+                    background.gameObject.SetActive(false);
                     ObjectInfo.text = "";
                     Crosshair.color = defaultColor;
                 }
             } else {
                 //Debug.Log("No object");
+                background.gameObject.SetActive(false);
                 ObjectInfo.text = "";
                 Crosshair.color = defaultColor;
             }
         } else {
+            background.gameObject.SetActive(false);
             ObjectInfo.text = "";
             Crosshair.color = defaultColor;
             if (Input.GetMouseButtonUp(0)){
