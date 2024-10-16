@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class MovableObject : MonoBehaviour, InteractiveObjects
 {
     public float rayDistance = 2f;
@@ -55,3 +55,4 @@ public class MovableObject : MonoBehaviour, InteractiveObjects
         GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(transform.position, newPosition, t));
     }
 }
+*/
