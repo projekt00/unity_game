@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UniversalObjectsController : MonoBehaviour
+public class UniversalObjectController : MonoBehaviour
 {
     public enum InteractionType
     {
@@ -21,11 +21,16 @@ public class UniversalObjectsController : MonoBehaviour
     public UnityEvent onHold;       // Event triggered while holding
     public UnityEvent onHoldEnd;    // Event triggered when holding ends
 
+    public string mouseHoverInfo;
+
     public float holdDuration = 2f; // Duration for holding in seconds
 
     private bool isHolding = false;
     private float holdTime = 0f;
 
+    private Vector3 initialPosition;
+    private Vector3 initialRotation;
+    
     void Update()
     {
         if (isHolding && interactionType == InteractionType.Holdable)
@@ -43,15 +48,10 @@ public class UniversalObjectsController : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (interactionType == InteractionType.Clickable)
-        {
-            onClick.Invoke(); // Trigger event on click
-        }
-        else if (interactionType == InteractionType.Holdable)
+        if (interactionType == InteractionType.Holdable)
         {
             isHolding = true;
             holdTime = 0f; // Reset hold time
-            onHoldStart.Invoke(); // Trigger event when holding starts
         }
     }
 
@@ -60,7 +60,6 @@ public class UniversalObjectsController : MonoBehaviour
         if (interactionType == InteractionType.Holdable)
         {
             isHolding = false;
-            onHoldEnd.Invoke(); // Trigger event when holding ends
         }
     }
 
@@ -75,4 +74,5 @@ public class UniversalObjectsController : MonoBehaviour
             onHoldEnd = null;
         }
     }
+
 }
