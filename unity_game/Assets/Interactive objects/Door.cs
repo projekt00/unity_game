@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, InteractiveObjects
 {
     public bool isOpen = false;
     private Vector3 InitRotation;
@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     // Publiczny wektor obrotu
     public Vector3 rotationOffset = new Vector3(0, 90, 0);
 
-    // Publiczna prï¿½dkoï¿½ï¿½ ruchu
+    // Publiczna prêdkoœæ ruchu
     public float movementDuration = 1f;
 
     // Zdarzenia
@@ -21,11 +21,13 @@ public class Door : MonoBehaviour
     public UnityEvent onStartMovement;
     public UnityEvent onEndMovement;
 
-    void Start(){
+    void Start()
+    {
         InitRotation = transform.localEulerAngles;
     }
+
     public void OnInteract()
-    {   
+    {
         if (isOpen)
         {
             onStartMovement.Invoke();

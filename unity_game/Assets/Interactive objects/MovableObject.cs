@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovableObject : MonoBehaviour
+public class MovableObject : MonoBehaviour, InteractiveObjects
 {
     public float rayDistance = 2f;
     private bool isGrabbed = false;
@@ -30,7 +30,7 @@ public class MovableObject : MonoBehaviour
         rb.isKinematic = true;
     }
 
-    public void MoveGrabbedObj(){
+    void MoveGrabbedObj(){
         Vector3 newPosition = Camera.main.transform.position + Camera.main.transform.forward * rayDistance;
 
         Renderer renderer = GetComponent<Renderer>();
