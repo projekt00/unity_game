@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using DG.Tweening; // Make sure you have DOTween installed
 
 public class ObjectMover : MonoBehaviour
@@ -14,15 +15,12 @@ public class ObjectMover : MonoBehaviour
     private Vector3 initialRotation; // Store the starting rotation of the object
     private Tween currentTween; // Reference to the current animation
 
-    void Start()
-    {
-        initialPosition = transform.position; // Capture the initial position when the game starts
-        initialRotation = transform.eulerAngles; // Capture the initial rotation when the game starts
+    public void Start(){
+        initialPosition = transform.position;
+        initialRotation = transform.eulerAngles;
     }
-
-    // Call this method to move the object to the target position and rotation
     public void MoveToTarget()
-    {
+    {   
         // If there is an active tween, kill it before starting a new one
         if (currentTween != null && currentTween.IsPlaying())
         {
