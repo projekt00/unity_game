@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 7252857739296362319, guid: e62317892d639ed418b752e8578ec16c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 9712ffb011fad8341afb706aef1a6531, type: 2}
     - target: {fileID: 8167213072243903132, guid: e62317892d639ed418b752e8578ec16c, type: 3}
       propertyPath: m_Name
       value: CurtainB_2
@@ -367,7 +367,7 @@ PrefabInstance:
     - target: {fileID: 7252857739296362319, guid: e62317892d639ed418b752e8578ec16c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 9712ffb011fad8341afb706aef1a6531, type: 2}
     - target: {fileID: 8167213072243903132, guid: e62317892d639ed418b752e8578ec16c, type: 3}
       propertyPath: m_Name
       value: CurtainB_1
