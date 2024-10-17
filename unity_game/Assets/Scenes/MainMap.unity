@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  rotationOffset: {x: 0, y: 90, z: 0}
+  rotationOffset: {x: 0, y: -90, z: 0}
   movementDuration: 3
   onOpen:
     m_PersistentCalls:
@@ -2252,7 +2252,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2272,7 +2272,7 @@ Transform:
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 351.4, y: -151.5, z: 95}
+  m_LocalPosition: {x: 43.52, y: 46.51, z: 24.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8285,7 +8285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
-  rotationOffset: {x: 0, y: 90, z: 0}
+  rotationOffset: {x: 0, y: -90, z: 0}
   movementDuration: 3
   onOpen:
     m_PersistentCalls:

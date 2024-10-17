@@ -91,6 +91,8 @@ MonoBehaviour:
   Crosshair: {fileID: 3451864558313181411}
   defaultColor: {r: 0.105882354, g: 0.078431375, b: 0.78431374, a: 0.8}
   interactColor: {r: 0.15686275, g: 0.627451, b: 0.11764706, a: 0.8}
+  ObjectInfo: {fileID: 0}
+  background: {fileID: 0}
   rayDistance: 5
 --- !u!1 &6640467384448093860
 GameObject:
