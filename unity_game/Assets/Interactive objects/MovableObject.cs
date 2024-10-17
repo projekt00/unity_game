@@ -36,7 +36,7 @@ public class MovableObject : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>();
         Vector3 boxSize = renderer != null ? renderer.bounds.size : transform.localScale; // Get the box size for collision detection
 
-        
+        //First check is needed because second check checks only collision of the center of the object, doesn't include object shape
         Collider[] hitColliders = Physics.OverlapBox(newPosition, boxSize / 2, Quaternion.identity); // Check for collisions
         foreach (Collider collider in hitColliders){
             if (collider.gameObject != this.gameObject){ // Stop moving if there is a collision with another object
@@ -48,10 +48,11 @@ public class MovableObject : MonoBehaviour
         Vector3 direction = newPosition - transform.position;
         float distance = direction.magnitude;
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, direction.normalized, out hit, distance)){ //Stop moving if there is no collision in the new position but there is an object on a way to the new position
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, direction.normalized, distance);
+        foreach (RaycastHit hit in hits){ //Stop moving if there is no collision in the new position but there is an object on a way to the new position
             //Debug.Log("Second collision");
-            if (hit.collider.gameObject != this.gameObject){
+            if (hit.collider.gameObject != this.gameObject){ //Ignore collision with self
                 return;
             }
         }
