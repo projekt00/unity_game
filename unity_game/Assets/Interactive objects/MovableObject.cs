@@ -40,6 +40,7 @@ public class MovableObject : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapBox(newPosition, boxSize / 2, Quaternion.identity); // Check for collisions
         foreach (Collider collider in hitColliders){
             if (collider.gameObject != this.gameObject){ // Stop moving if there is a collision with another object
+                //Debug.Log("First collison");
                 return; 
             }
         }
@@ -47,8 +48,12 @@ public class MovableObject : MonoBehaviour
         Vector3 direction = newPosition - transform.position;
         float distance = direction.magnitude;
 
-        if (Physics.Raycast(transform.position, direction.normalized, distance)){ //Stop moving if there is no collision in the new position but there is an object on a way to the new position
-            return;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, direction.normalized, out hit, distance)){ //Stop moving if there is no collision in the new position but there is an object on a way to the new position
+            //Debug.Log("Second collision");
+            if (hit.collider.gameObject != this.gameObject){
+                return;
+            }
         }
 
         float t = Mathf.Clamp(Time.deltaTime * 10f, 0, 1);
