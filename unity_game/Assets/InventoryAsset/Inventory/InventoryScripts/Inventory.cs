@@ -661,5 +661,15 @@ namespace InventorySystem
             this.itemAction = itemAction;
         }
 
+        //my functions
+        public bool inInventory(string itemType){
+            bool contains = false;
+            foreach(InventoryItem item in inventoryList){
+                if (item.GetItemType() == itemType){
+                    return true;
+                }
+            }
+            return contains;
+        }
     }
 }

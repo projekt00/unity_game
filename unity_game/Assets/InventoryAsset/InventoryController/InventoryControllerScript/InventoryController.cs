@@ -766,5 +766,19 @@ namespace InventorySystem
         {
             InventorySaveSystem.SaveInventory(inventoryManager, SceneManager.GetActiveScene().name);
         }
+
+
+    //my functions
+
+        public bool isInInventory(string inventoryName, string itemType){
+             if (!(TestInventoryDict(inventoryName) && TestItemDict(itemType))){
+                return false;
+            }
+            Inventory inventory = inventoryManager[inventoryName];
+            return inventory.inInventory(itemType);
+        }
     }
 }
+
+
+
