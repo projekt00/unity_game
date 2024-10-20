@@ -5067,7 +5067,7 @@ GameObject:
   - component: {fileID: 8125367103722789187}
   m_Layer: 0
   m_Name: InteractableFurniture
-  m_TagString: Untagged
+  m_TagString: Interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29054,6 +29054,7 @@ GameObject:
   - component: {fileID: 7335920762183065101}
   - component: {fileID: 6831289740473559674}
   - component: {fileID: 6089475626506477754}
+  - component: {fileID: 3765600327978538014}
   m_Layer: 0
   m_Name: MirrorComode
   m_TagString: Interactive
@@ -29138,46 +29139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0bd20dc6fd7894fb00d5e734931bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 1
+  interactionType: 0
   onClick:
     m_PersistentCalls:
-      m_Calls: []
-  onHoldStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onHold:
-    m_PersistentCalls:
-      m_Calls: []
-  onHoldEnd:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1171026227376430062}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2544743480328574156}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 875284684389123766}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 3765600327978538014}
+        m_TargetAssemblyTypeName: Dismantle, Assembly-CSharp
+        m_MethodName: onClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29187,6 +29155,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onHoldStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onHold:
+    m_PersistentCalls:
+      m_Calls: []
+  onHoldEnd:
+    m_PersistentCalls:
+      m_Calls: []
   mouseHoverInfo: ROZMONTUJ
   holdDuration: 2
 --- !u!65 &6089475626506477754
@@ -29210,6 +29187,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2133942, y: 2.3463593, z: 0.6774273}
   m_Center: {x: 0, y: 1.1863403, z: 1.0552797}
+--- !u!114 &3765600327978538014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544743480328574156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94542b7ccb5ee1d47b303b75567570ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectAfterDismantling: {fileID: 1171026227376430062}
+  dismantleEffect: {fileID: 1059092507681871070}
+  requiredTool: Screwdriver
 --- !u!1 &5001485586752706953
 GameObject:
   m_ObjectHideFlags: 0
