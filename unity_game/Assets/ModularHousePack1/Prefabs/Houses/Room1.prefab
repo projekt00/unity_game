@@ -39,6 +39,7 @@ Transform:
   - {fileID: 4883593348684457046}
   - {fileID: 3098576062490094117}
   - {fileID: 4264637292409804533}
+  - {fileID: 5275863285806716272}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &605295429614699095
@@ -562,6 +563,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6367500355248394995, guid: a42ad6a4668ecfb44a1f036838e43f67, type: 3}
   m_PrefabInstance: {fileID: 7166052549525062662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7579841930218014848
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1383082301111631113}
+    m_Modifications:
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.282
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 46.647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120276609412171594, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+      propertyPath: m_Name
+      value: Persian_Carpet_URP_028 Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+--- !u!4 &5275863285806716272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2307711799988411888, guid: 9155a8d5d72765249b4e7611b36ad718, type: 3}
+  m_PrefabInstance: {fileID: 7579841930218014848}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8313008660628453590
 PrefabInstance:
