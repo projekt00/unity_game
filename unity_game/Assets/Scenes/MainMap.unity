@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44950855, g: 0.4965061, b: 0.5591728, a: 1}
+  m_IndirectSpecularColor: {r: 0.44950807, g: 0.49650508, b: 0.5591714, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -522,7 +522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340365072807269192, guid: eb7eaceff11299c4682b6b5ee6277cca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000020980835
+      value: 0.000049591064
       objectReference: {fileID: 0}
     - target: {fileID: 3477109927219579194, guid: eb7eaceff11299c4682b6b5ee6277cca, type: 3}
       propertyPath: m_Size
@@ -3275,50 +3275,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1100308848047118674, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100308848047118674, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 597603021389272105, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
+      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1348438428}
     - target: {fileID: 1100308848047118674, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
       propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1348438428}
-    - target: {fileID: 1100308848047118674, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100308848047118674, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: Complete
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100308848047118674, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: MissionObject, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100308848047118674, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100308848047118674, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2285159318497621993, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 49.405
-      objectReference: {fileID: 0}
+    - target: {fileID: 3264674001887294807, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
+      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1348438428}
+    - target: {fileID: 3622723547405081485, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
+      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1348438428}
+    - target: {fileID: 3682021177013326655, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
+      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1348438428}
+    - target: {fileID: 3793393617542637474, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
+      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1348438428}
     - target: {fileID: 5619013613974830240, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
       propertyPath: m_Name
       value: ElectricSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 6703034390183868475, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onEndMovement.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5806941528375546554, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
+      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1348438428}
     - target: {fileID: 6703034390183868475, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
       propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3328,29 +3316,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1661528195}
     - target: {fileID: 6703034390183868475, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onEndMovement.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6703034390183868475, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
       propertyPath: onEndMovement.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1944121902}
-    - target: {fileID: 6703034390183868475, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onEndMovement.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6703034390183868475, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onEndMovement.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Complete
-      objectReference: {fileID: 0}
-    - target: {fileID: 6703034390183868475, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onEndMovement.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MissionObject, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6703034390183868475, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
-      propertyPath: onEndMovement.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
