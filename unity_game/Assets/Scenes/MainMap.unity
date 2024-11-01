@@ -522,7 +522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340365072807269192, guid: eb7eaceff11299c4682b6b5ee6277cca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000049591064
+      value: 0.000051498413
       objectReference: {fileID: 0}
     - target: {fileID: 3477109927219579194, guid: eb7eaceff11299c4682b6b5ee6277cca, type: 3}
       propertyPath: m_Size
@@ -2785,6 +2785,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -7128067719386893152, guid: 204ae77320b536d459d12c2126255a73, type: 2}
+    - target: {fileID: 2913508331486310430, guid: 8d5ff424c88dcdf4a87b08c41ef78c10, type: 3}
+      propertyPath: rotationOffset.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 3507695492685040989, guid: 8d5ff424c88dcdf4a87b08c41ef78c10, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -2801,6 +2805,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -7128067719386893152, guid: 204ae77320b536d459d12c2126255a73, type: 2}
+    - target: {fileID: 5570562135233048224, guid: 8d5ff424c88dcdf4a87b08c41ef78c10, type: 3}
+      propertyPath: rotationOffset.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 5686081028168068095, guid: 8d5ff424c88dcdf4a87b08c41ef78c10, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -3295,6 +3303,10 @@ PrefabInstance:
       propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1348438428}
+    - target: {fileID: 3711984262473397047, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
+      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1348438428}
     - target: {fileID: 3793393617542637474, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
       propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3319,6 +3331,10 @@ PrefabInstance:
       propertyPath: onEndMovement.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1944121902}
+    - target: {fileID: 7265831224124054029, guid: 29f6d9b298f1e9d418268ae630ac4ea8, type: 3}
+      propertyPath: onOpen.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1348438428}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
