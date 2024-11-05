@@ -18,8 +18,10 @@ public class Door : MonoBehaviour
     public float durability = 100f;
     public float waterLevelToDMG = 0.8f;
     public float DPS = 2f;
+    public bool isOnFloodLevel = false;
     public bool isEntryDoor = false;
-
+    [Header("Only if isEntryDoor = true")]
+    public GameObject exteriorWater;
     // Zdarzenia
     public UnityEvent onOpen;
     public UnityEvent onClose;
@@ -33,21 +35,40 @@ public class Door : MonoBehaviour
     }
 
     public void Update(){
-        if (isFlooded){
-            if (isFloodable){
+        if (isOnFloodLevel){
+            if (isFlooded){
+                if (isFloodable){
+                    if (durability > 0f && !isOpen){
+                        isFloodable = false;
+                        //more
+                    }
+                } else {
+                    if (durability <= 0f || isOpen){
+                        isFloodable = true;
+                        foreach (GameObject room in connectedRooms){
+                            if (!room.GetComponent<InteriorFloodRegion>().getIsFlooding()){
+                                room.GetComponent<InteriorFloodRegion>().setIsFlooding(true);
+                                break;
+                            }
+                        }
+                    }
+                }
             } else {
-                if (durability <= 0f || isOpen){
-                    isFloodable = true;
-                    foreach (GameObject room in connectedRooms){
-                        if (!room.GetComponent<InteriorFloodRegion>().getIsFlooding()){
-                            room.GetComponent<InteriorFloodRegion>().setIsFlooding(true);
-                            break;
+                if (isEntryDoor){
+                    if (exteriorWater.transform.position.y + exteriorWater.GetComponent<Renderer>().bounds.extents.y * 2 >= transform.position.y + waterLevelToDMG - GetComponent<Renderer>().bounds.extents.y){
+                            isFlooded = true;
+                            StartCoroutine(DestroyingDoor());
+                            Debug.Log("destroyment");
+                        }
+                } else {
+                    foreach(GameObject room in connectedRooms){
+                        if (room.transform.position.y + room.GetComponent<Renderer>().bounds.extents.y >= transform.position.y + waterLevelToDMG - GetComponent<Renderer>().bounds.extents.y){
+                            isFlooded = true;
+                            StartCoroutine(DestroyingDoor());
                         }
                     }
                 }
             }
-        } else {
-
         }
     }
     public void OnInteract()
@@ -77,5 +98,9 @@ public class Door : MonoBehaviour
                 room.GetComponent<InteriorFloodRegion>().setIsFlooding(true);
             }
         }
+    }
+    IEnumerator DestroyingDoor(){
+        durability -= DPS;
+        yield return new WaitForSeconds(1f);
     }
 }

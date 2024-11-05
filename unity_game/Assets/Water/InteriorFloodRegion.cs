@@ -5,14 +5,14 @@ using UnityEngine;
 public class InteriorFloodRegion : MonoBehaviour
 {
     public List<GameObject> neighbourRooms = new List<GameObject>(); //Rooms connected to this room
-    public RisingWater risingWaterScript;
+
     private bool isFlooding = false;
     private bool isWaterLevelRising = false;
+    private RisingWater risingWaterScript;
     void Start()
     {
-        
+        risingWaterScript = GetComponent<RisingWater>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -23,6 +23,7 @@ public class InteriorFloodRegion : MonoBehaviour
                     if (room.GetComponent<InteriorFloodRegion>().isFlooding && transform.position.y > room.transform.position.y){
                         isWaterLevelRising = false;
                         risingWaterScript.StopRising();
+                        Debug.Log("Stop rising");
                         break;
                     }
                 }

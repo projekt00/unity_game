@@ -10,7 +10,8 @@ public class RisingWater : MonoBehaviour
     public bool autoFlooding = true; //If set to true it will start flooding and game begining
 
     public float interval = 1.0f;
-
+    private bool coroutineStarted = false;
+    private Coroutine coroutine;
     void Start()
     {   
         if (autoFlooding) {
@@ -20,16 +21,23 @@ public class RisingWater : MonoBehaviour
 
     IEnumerator ScaleMarkers()
     {
-        while (transform.position.y < 0)
+        while (transform.position.y < maxHeight)
         {
             transform.DOMove(transform.position + heightIncrement, interval).SetEase(Ease.Linear);
             yield return new WaitForSeconds(interval);
         }
     }
     public void StopRising(){
-        StopCoroutine(ScaleMarkers());
+        Debug.Log("rising stopped");
+        if (coroutineStarted){
+            StopCoroutine(coroutine);
+            coroutineStarted = false;
+        }
     }
     public void StartRising(){
-        StartCoroutine(ScaleMarkers());
+        if (!coroutineStarted){
+            coroutine = StartCoroutine(ScaleMarkers());
+            coroutineStarted = true;
+        }
     }
 }
