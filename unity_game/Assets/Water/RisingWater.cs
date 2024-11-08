@@ -28,7 +28,7 @@ public class RisingWater : MonoBehaviour
         }
     }
     public void StopRising(){
-        Debug.Log("rising stopped");
+        //Debug.Log("rising stopped");
         if (coroutineStarted){
             StopCoroutine(coroutine);
             coroutineStarted = false;

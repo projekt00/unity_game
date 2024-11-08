@@ -13,7 +13,6 @@ public class InteriorFloodRegion : MonoBehaviour
     {
         risingWaterScript = GetComponent<RisingWater>();
     }
-    // Update is called once per frame
     void Update()
     {
         if (neighbourRooms.Count > 0){
@@ -23,7 +22,7 @@ public class InteriorFloodRegion : MonoBehaviour
                     if (room.GetComponent<InteriorFloodRegion>().isFlooding && transform.position.y > room.transform.position.y){
                         isWaterLevelRising = false;
                         risingWaterScript.StopRising();
-                        Debug.Log("Stop rising");
+                        //Debug.Log("Stop rising");
                         break;
                     }
                 }
