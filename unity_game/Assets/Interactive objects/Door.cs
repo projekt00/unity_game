@@ -35,9 +35,24 @@ public class Door : MonoBehaviour
     private GameObject sourceRoom;
     private bool isFlooded = false; //Sholud it be damaged or not
     private Vector3 initPos;
+    private Vector3 initRight;
+    private Vector3 initForward;
+    private bool openingAnimation = false;
+    private Quaternion rotation;
     void Start(){
-        InitRotation = transform.localEulerAngles;
-        initPos = transform.position;
+        if (isOpen){
+            //transform.eulerAngles + rotationOffset;
+            rotation = transform.rotation;
+            initPos = transform.position;
+            initRight = transform.right;
+            initForward = transform.forward;
+            //transform.eulerAngles - rotationOffset;
+        } else {
+            rotation = transform.rotation;
+            initPos = transform.position;
+            initRight = transform.right;
+            initForward = transform.forward;
+        }
     }
 
     public void Update(){
@@ -84,7 +99,6 @@ public class Door : MonoBehaviour
                             Debug.Log("Created particles");
                             CreateWaterParticles(targetRoom, sourceRoom);
                         } else {
-                            Debug.Log("Particles update");
                             UpdateWaterParticles(sourceRoom);
                         }
                     }
@@ -108,23 +122,29 @@ public class Door : MonoBehaviour
     }
     public void OnInteract()
     {   
-        if (isOpen)
-        {
-            onStartMovement.Invoke();
-            transform.DORotate(InitRotation, movementDuration).OnComplete(() => {
-                onClose.Invoke();
-                onEndMovement.Invoke();
-            });
-            isOpen = false;
-        }
-        else
-        {
-            onStartMovement.Invoke();
-            transform.DORotate(InitRotation + rotationOffset, movementDuration).OnComplete(() => {
-                onOpen.Invoke();
-                onEndMovement.Invoke();
-            });
-            isOpen = true;
+        if (openingAnimation == false){
+            if (isOpen)
+            {
+                onStartMovement.Invoke();
+                openingAnimation = true;
+                transform.DORotate(transform.eulerAngles - rotationOffset, movementDuration).OnComplete(() => {
+                    onClose.Invoke();
+                    onEndMovement.Invoke();
+                    openingAnimation = false;
+                });
+                isOpen = false;
+            }
+            else
+            {
+                onStartMovement.Invoke();
+                openingAnimation = true;
+                transform.DORotate(transform.eulerAngles + rotationOffset, movementDuration).OnComplete(() => {
+                    onOpen.Invoke();
+                    onEndMovement.Invoke();
+                    openingAnimation = false;
+                });
+                isOpen = true;
+            }
         }
     }
     private void StartFloodingRoom(){
@@ -141,10 +161,21 @@ public class Door : MonoBehaviour
     private void CreateWaterParticles(GameObject floodingRoom, GameObject waterSourceRoom){
         if (waterParticlesPrefab != null){
             Vector3 particlesPosition = initPos;
+            Vector3 floodingRoomDirection = floodingRoom.transform.position - transform.position;
+            floodingRoomDirection.Normalize();
+
+            float dotX = Vector3.Dot(initRight, floodingRoomDirection);
+            float dotZ = Vector3.Dot(initForward, floodingRoomDirection);
+
+            if (dotX < 0.5f){
+                rotation = rotation * Quaternion.Euler(180, 0, 0);
+            } else if (dotZ < 0.5f){
+                rotation = rotation * Quaternion.Euler(0, 0, 180);
+            }
+
             particlesPosition.x += GetComponent<Renderer>().bounds.extents.x;
             particlesPosition.z += GetComponent<Renderer>().bounds.extents.z;
-            waterParticles = Instantiate(waterParticlesPrefab, particlesPosition, Quaternion.identity);
-            //waterParticles.transform.LookAt(floodingRoom.transform);
+            waterParticles = Instantiate(waterParticlesPrefab, particlesPosition, rotation);
             UpdateWaterParticles(waterSourceRoom);
         } else {
             Debug.Log("You didn't assign the water particles prefab");
@@ -159,7 +190,14 @@ public class Door : MonoBehaviour
             newScale.y = praticlesHeight/2;
             waterParticles.transform.localScale = newScale;
             //newPosition.y = waterSourceRoom.transform.position.y + waterSourceRoom.GetComponent<Renderer>().bounds.extents.y - praticlesHeight/2;
-            newPosition.y = waterSourceRoom.transform.position.y + waterSourceRoom.GetComponent<Renderer>().bounds.extents.y - waterParticles.GetComponent<Renderer>().bounds.extents.y/2;
+            newPosition.y = waterSourceRoom.transform.position.y + waterSourceRoom.GetComponent<Renderer>().bounds.extents.y - waterParticles.transform.localScale.y/2;
+            if (newPosition.y < 0){
+                Debug.Log("HHHHHHHHHHHHHHHHHHH");
+                Debug.Log(waterSourceRoom.transform.position.y);
+                Debug.Log(waterSourceRoom.GetComponent<Renderer>().bounds.extents.y);
+                Debug.Log(waterParticles.GetComponent<Renderer>().bounds.extents.y);
+                Debug.Log(waterParticles.GetComponent<Renderer>().bounds.extents.y/2);
+            }
             /*
             if (newPosition.y + waterParticles.transform.localScale.y > transform.position.y + GetComponent<Renderer>().bounds.extents.y){ //if watersource is higher than doors
                 newPosition.y = transform.position.y;
