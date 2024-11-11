@@ -41,12 +41,12 @@ public class Door : MonoBehaviour
     private Quaternion rotation;
     void Start(){
         if (isOpen){
-            //transform.eulerAngles + rotationOffset;
+            transform.rotation = Quaternion.Euler(transform.eulerAngles + rotationOffset);
             rotation = transform.rotation;
             initPos = transform.position;
             initRight = transform.right;
             initForward = transform.forward;
-            //transform.eulerAngles - rotationOffset;
+            transform.rotation = Quaternion.Euler(transform.eulerAngles - rotationOffset);
         } else {
             rotation = transform.rotation;
             initPos = transform.position;
@@ -60,35 +60,58 @@ public class Door : MonoBehaviour
             if (isFlooded){
                 if (isFloodable){
                     if (durability > 0f && !isOpen){
+                        Debug.Log("Smacked");
                         targetRoom.GetComponent<InteriorFloodRegion>().setIsFlooding(false);
                         targetRoom = null;
                         sourceRoom = null;
                         Destroy(waterParticles);
                         waterParticles = null;
+                        isFloodable = false;
                     }
                 } else {
                     if (durability <= 0f || isOpen){
-                        isFloodable = true;
-                        foreach (GameObject room in connectedRooms){
-                            if (!room.GetComponent<InteriorFloodRegion>().getIsFlooding()){
-                                room.GetComponent<InteriorFloodRegion>().setIsFlooding(true);
-                                targetRoom = room;
-                                if (!isEntryDoor){
-                                    if (connectedRooms[0] == room){
-                                        sourceRoom = connectedRooms[1];
-                                    } else if(connectedRooms[1] == room){
-                                        sourceRoom = connectedRooms[0];
+                        for (int i = 0; connectedRooms.Length > i; i++){
+                            int i2 = (i == 0) ? 1 : 0;
+                            if (!connectedRooms[i].GetComponent<InteriorFloodRegion>().startedToFlood()){
+                                isFloodable = true;
+                                if (!connectedRooms[i].GetComponent<InteriorFloodRegion>().getIsFlooding()){
+                                    connectedRooms[i].GetComponent<InteriorFloodRegion>().setIsFlooding(true);
+                                    targetRoom = connectedRooms[i];
+                                    if (!isEntryDoor){
+                                        sourceRoom = connectedRooms[i2];
+                                    } else {
+                                        sourceRoom = exteriorWater;
                                     }
                                     break;
-                                } else {
-                                    sourceRoom = exteriorWater;
+                                }
+                            } else {
+                                if (!connectedRooms[i].GetComponent<InteriorFloodRegion>().getIsFlooding()){
+                                    if (!isEntryDoor){
+                                        if (connectedRooms[i2].transform.position.y > connectedRooms[i].transform.position.y){
+                                            isFloodable = true;
+                                            connectedRooms[i].GetComponent<InteriorFloodRegion>().setIsFlooding(true);
+                                            targetRoom = connectedRooms[i];
+                                            sourceRoom = connectedRooms[i2];
+                                            break;
+                                        }
+                                    } else {
+                                        if (connectedRooms[0].transform.position.y + connectedRooms[0].GetComponent<Renderer>().bounds.extents.y * 2 <
+                                            exteriorWater.transform.position.y + exteriorWater.GetComponent<Renderer>().bounds.extents.y * 2){
+                                            isFloodable = true;
+                                            Debug.Log("Exterior water flood");
+                                            connectedRooms[0].GetComponent<InteriorFloodRegion>().setIsFlooding(true);
+                                            targetRoom = connectedRooms[0];
+                                            sourceRoom = exteriorWater;
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
                 if (targetRoom != null){
-                    if (targetRoom.transform.position.y + 0.1f >= sourceRoom.transform.position.y){
+                    if (targetRoom.transform.position.y + targetRoom.GetComponent<Renderer>().bounds.extents.y + 0.1f >=
+                         sourceRoom.transform.position.y + sourceRoom.GetComponent<Renderer>().bounds.extents.y){
                         if (waterParticles != null){
                             Destroy(waterParticles);
                             waterParticles = null;
@@ -191,13 +214,6 @@ public class Door : MonoBehaviour
             waterParticles.transform.localScale = newScale;
             //newPosition.y = waterSourceRoom.transform.position.y + waterSourceRoom.GetComponent<Renderer>().bounds.extents.y - praticlesHeight/2;
             newPosition.y = waterSourceRoom.transform.position.y + waterSourceRoom.GetComponent<Renderer>().bounds.extents.y - waterParticles.transform.localScale.y/2;
-            if (newPosition.y < 0){
-                Debug.Log("HHHHHHHHHHHHHHHHHHH");
-                Debug.Log(waterSourceRoom.transform.position.y);
-                Debug.Log(waterSourceRoom.GetComponent<Renderer>().bounds.extents.y);
-                Debug.Log(waterParticles.GetComponent<Renderer>().bounds.extents.y);
-                Debug.Log(waterParticles.GetComponent<Renderer>().bounds.extents.y/2);
-            }
             /*
             if (newPosition.y + waterParticles.transform.localScale.y > transform.position.y + GetComponent<Renderer>().bounds.extents.y){ //if watersource is higher than doors
                 newPosition.y = transform.position.y;
