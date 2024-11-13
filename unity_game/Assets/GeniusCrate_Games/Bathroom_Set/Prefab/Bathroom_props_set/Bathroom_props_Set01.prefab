@@ -5,8 +5,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8784353925515931833, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -1610206437689394484, guid: 68d14434ff23d4842b97f96cbb6e09db, type: 3}
     - target: {fileID: -8679921383154817045, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,9 +56,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6304960094287820463, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9adda2b7acac9e94aad4b8f92b33b53a, type: 2}
+    - target: {fileID: -4570294308204710877, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -1610206437689394484, guid: 68d14434ff23d4842b97f96cbb6e09db, type: 3}
+    - target: {fileID: -3731192320015473927, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.69
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
       propertyPath: m_Name
       value: Bathroom_props_Set01
       objectReference: {fileID: 0}
+    - target: {fileID: 2647898422681595148, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187161680594055901, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -1610206437689394484, guid: 68d14434ff23d4842b97f96cbb6e09db, type: 3}
+    - target: {fileID: 9077926073120308842, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -1054535158718641112, guid: e35379fad6334164186a552d0738df36, type: 3}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be0c31901f815854fbcfe8d0a3962c80, type: 3}
