@@ -12,6 +12,7 @@ public class RisingWater : MonoBehaviour
     public float interval = 1.0f;
     private bool coroutineStarted = false;
     private Coroutine coroutine;
+    private Tween waterRiseTween;
     void Start()
     {   
         if (autoFlooding) {
@@ -23,18 +24,25 @@ public class RisingWater : MonoBehaviour
     {
         while (transform.position.y < maxHeight)
         {
-            transform.DOMove(transform.position + heightIncrement, interval).SetEase(Ease.Linear);
+            waterRiseTween = transform.DOMove(transform.position + heightIncrement, interval).SetEase(Ease.Linear);
             yield return new WaitForSeconds(interval);
         }
     }
-    public void StopRising(){
+    public void StopRising(float equalizeTo = -1000000f){
         //Debug.Log("rising stopped");
         if (coroutineStarted){
             StopCoroutine(coroutine);
+            waterRiseTween.Kill();
             coroutineStarted = false;
+            if (equalizeTo != -1000000f){
+                Vector3 newPos = transform.position;
+                newPos.y = equalizeTo;
+                transform.position = newPos;
+            }
         }
     }
     public void StartRising(){
+        Debug.Log(gameObject.name);
         if (!coroutineStarted){
             coroutine = StartCoroutine(ScaleMarkers());
             coroutineStarted = true;

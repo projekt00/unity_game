@@ -62,6 +62,12 @@ public class Door : MonoBehaviour
                     if (durability > 0f && !isOpen){
                         Debug.Log("Smacked");
                         targetRoom.GetComponent<InteriorFloodRegion>().setIsFlooding(false);
+                        if (sourceRoom != exteriorWater){
+                            sourceRoom.GetComponent<InteriorFloodRegion>().removeFromSource(targetRoom);
+                        }
+                        if (targetRoom != exteriorWater){
+                            targetRoom.GetComponent<InteriorFloodRegion>().removeSource(sourceRoom);
+                        }
                         targetRoom = null;
                         sourceRoom = null;
                         Destroy(waterParticles);
@@ -79,12 +85,35 @@ public class Door : MonoBehaviour
                                     targetRoom = connectedRooms[i];
                                     if (!isEntryDoor){
                                         sourceRoom = connectedRooms[i2];
+                                        sourceRoom.GetComponent<InteriorFloodRegion>().addToSource(targetRoom);
                                     } else {
                                         sourceRoom = exteriorWater;
                                     }
+                                    targetRoom.GetComponent<InteriorFloodRegion>().addSource(sourceRoom);
                                     break;
                                 }
                             } else {
+                                if (!isEntryDoor){
+                                    if (connectedRooms[i2].transform.position.y < connectedRooms[i].transform.position.y){
+                                        isFloodable = true;
+                                        connectedRooms[i2].GetComponent<InteriorFloodRegion>().setIsFlooding(true);
+                                        targetRoom = connectedRooms[i2];
+                                        sourceRoom = connectedRooms[i];
+                                        sourceRoom.GetComponent<InteriorFloodRegion>().addToSource(targetRoom);
+                                        targetRoom.GetComponent<InteriorFloodRegion>().addSource(sourceRoom);
+                                        break;
+                                    }
+                                } else {
+                                    if (connectedRooms[0].transform.position.y + connectedRooms[0].GetComponent<Renderer>().bounds.extents.y * 2 <
+                                        exteriorWater.transform.position.y + exteriorWater.GetComponent<Renderer>().bounds.extents.y * 2){
+                                        isFloodable = true;
+                                        Debug.Log("Exterior water flood");
+                                        connectedRooms[0].GetComponent<InteriorFloodRegion>().setIsFlooding(true);
+                                        targetRoom = connectedRooms[0];
+                                        sourceRoom = exteriorWater;
+                                    }
+                                }
+                                /*
                                 if (!connectedRooms[i].GetComponent<InteriorFloodRegion>().getIsFlooding()){
                                     if (!isEntryDoor){
                                         if (connectedRooms[i2].transform.position.y > connectedRooms[i].transform.position.y){
@@ -105,6 +134,7 @@ public class Door : MonoBehaviour
                                         }
                                     }
                                 }
+                            */
                             }
                         }
                     }
@@ -167,13 +197,6 @@ public class Door : MonoBehaviour
                     openingAnimation = false;
                 });
                 isOpen = true;
-            }
-        }
-    }
-    private void StartFloodingRoom(){
-        foreach (GameObject room in connectedRooms){
-            if (!room.GetComponent<InteriorFloodRegion>().getIsFlooding()){
-                room.GetComponent<InteriorFloodRegion>().setIsFlooding(true);
             }
         }
     }
