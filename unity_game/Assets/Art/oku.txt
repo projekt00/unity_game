@@ -1,0 +1,50 @@
+
+
+
+this model is free   .....texture 1024 * 1024
+if you want to buy all
+link...
+https://www.cgtrader.com/3d-models/military/other/sandbag-set
+https://3dexport.com/3dmodel-sandbag-188258.htm
+
+
+
+Sandbag_1.............660 polygon.
+          ...........332  vertices.
+
+Sandbag_2.............868 polygon.
+          ...........436  vertices.
+
+Sandbag_3.............1544 polygon.
+          ...........774  vertices.
+
+Sandbag_4............708 polygon.
+          ...........356  vertices.
+
+Sandbag_5.............714 polygon.
+          ...........359  vertices.
+
+Sandbag_6.............912 polygon.
+          ...........458  vertices.
+
+Sandbag_7.............846 polygon.
+          ...........425  vertices.
+
+Sandbag_8.............1052 polygon.
+          ...........528  vertices.
+
+Sandbag_9.............702 polygon.
+          ...........353  vertices.
+
+Sandbag_10............720 polygon.
+          ...........362  vertices.
+
+OBJ,FBX,BLEND FORMAT MODEL.
+
+4096 * 4096 TEXTURE.
+
+uv map.:dif. ao. spec. nor
+
+GAME READY.
+
+

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CinemachineTarget
   - Interactive
+  - Slot
+  - Sandbag
+  - Pickable
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Floor
-  - 
+  - PlaceZone
   - 
   - 
   - 
