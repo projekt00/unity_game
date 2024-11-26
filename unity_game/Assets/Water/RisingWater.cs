@@ -13,11 +13,14 @@ public class RisingWater : MonoBehaviour
     private bool coroutineStarted = false;
     private Coroutine coroutine;
     private Tween waterRiseTween;
+    private float initLevel;
+    private Coroutine decreasingCoroutine;
     void Start()
     {   
         if (autoFlooding) {
             StartRising();
         }
+        initLevel = transform.position.y;
     }
 
     IEnumerator ScaleMarkers()
@@ -26,6 +29,12 @@ public class RisingWater : MonoBehaviour
         {
             waterRiseTween = transform.DOMove(transform.position + heightIncrement, interval).SetEase(Ease.Linear);
             yield return new WaitForSeconds(interval);
+        }
+    }
+    IEnumerator DecreaseMarkers(){
+        while (transform.position.y > initLevel){
+            waterRiseTween = transform.DOMove(transform.position - heightIncrement*5, interval).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(interval);            
         }
     }
     public void StopRising(float equalizeTo = -1000000f){
@@ -46,6 +55,12 @@ public class RisingWater : MonoBehaviour
         if (!coroutineStarted){
             coroutine = StartCoroutine(ScaleMarkers());
             coroutineStarted = true;
+        }
+    }
+    public void DecreaseWater(){
+        StopRising();
+        if (decreasingCoroutine == null){
+            decreasingCoroutine = StartCoroutine(DecreaseMarkers());
         }
     }
 }

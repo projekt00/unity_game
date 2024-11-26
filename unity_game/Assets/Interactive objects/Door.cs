@@ -37,8 +37,11 @@ public class Door : MonoBehaviour
     private Vector3 initPos;
     private Vector3 initRight;
     private Vector3 initForward;
+    private bool destroyed = false;
     private bool openingAnimation = false;
     private Quaternion rotation;
+    private Coroutine destroyingCoroutine = null;
+    private Rigidbody rb;
     void Start(){
         if (isOpen){
             transform.rotation = Quaternion.Euler(transform.eulerAngles + rotationOffset);
@@ -160,13 +163,17 @@ public class Door : MonoBehaviour
                 if (isEntryDoor){
                     if (exteriorWater.transform.position.y + exteriorWater.GetComponent<Renderer>().bounds.extents.y * 2 >= transform.position.y + waterLevelToDMG - GetComponent<Renderer>().bounds.extents.y){
                             isFlooded = true;
-                            StartCoroutine(DestroyingDoor());
+                            if (destroyingCoroutine == null){
+                                destroyingCoroutine = StartCoroutine(DestroyingDoor());
+                            }
                         }
                 } else {
                     foreach(GameObject room in connectedRooms){
                         if (room.transform.position.y + room.GetComponent<Renderer>().bounds.extents.y >= transform.position.y + waterLevelToDMG - GetComponent<Renderer>().bounds.extents.y){
                             isFlooded = true;
-                            StartCoroutine(DestroyingDoor());
+                            if (destroyingCoroutine == null){
+                                destroyingCoroutine = StartCoroutine(DestroyingDoor());
+                            }
                         }
                     }
                 }
@@ -201,8 +208,46 @@ public class Door : MonoBehaviour
         }
     }
     IEnumerator DestroyingDoor(){
-        durability -= DPS;
-        yield return new WaitForSeconds(1f);
+        while (durability > 0){
+            durability -= DPS;
+            Debug.Log(durability);
+            if (durability <= 0 && !destroyed && !isOpen){
+                Vector3 doorPosition = transform.position;
+                Vector3 roomPosition;
+                if (targetRoom != null){
+                    roomPosition = targetRoom.transform.position;
+                }
+                else {
+                    if (!isEntryDoor){
+                        roomPosition = connectedRooms[0].transform.position.y >= connectedRooms[1].transform.position.y ?
+                                        connectedRooms[0].transform.position : connectedRooms[1].transform.position;
+                    } else {
+                        roomPosition = connectedRooms[0].transform.position;
+                    }
+                }
+
+                Vector3 directionToRoom = (roomPosition - doorPosition).normalized;
+
+
+                Vector3 hitDirection = -directionToRoom;
+                if (isEntryDoor){
+                    hitDirection = -hitDirection;
+                }
+
+                rb = GetComponent<Rigidbody>();
+                if (rb == null){   
+                    gameObject.AddComponent<Rigidbody>();
+                    GetComponent<Rigidbody>().useGravity = true;
+                    GetComponent<Rigidbody>().AddForce(hitDirection * 10f, ForceMode.Impulse);
+                    destroyed = true;
+                }
+                else
+                {
+                    Debug.LogWarning("Drzwi nie mają komponentu Rigidbody");
+                }
+            }
+            yield return new WaitForSeconds(1f);
+        }
     }
     private void CreateWaterParticles(GameObject floodingRoom, GameObject waterSourceRoom){
         if (waterParticlesPrefab != null){
