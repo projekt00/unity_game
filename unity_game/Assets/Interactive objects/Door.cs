@@ -41,6 +41,7 @@ public class Door : MonoBehaviour
     private bool openingAnimation = false;
     private Quaternion rotation;
     private Coroutine destroyingCoroutine = null;
+    private Rigidbody rb;
     void Start(){
         if (isOpen){
             transform.rotation = Quaternion.Euler(transform.eulerAngles + rotationOffset);
@@ -233,11 +234,11 @@ public class Door : MonoBehaviour
                     hitDirection = -hitDirection;
                 }
 
-                Rigidbody rb = GetComponent<Rigidbody>();
-                if (rb != null)
-                {   
-                    rb.useGravity = true;
-                    rb.AddForce(hitDirection * 10f, ForceMode.Impulse);
+                rb = GetComponent<Rigidbody>();
+                if (rb == null){   
+                    gameObject.AddComponent<Rigidbody>();
+                    GetComponent<Rigidbody>().useGravity = true;
+                    GetComponent<Rigidbody>().AddForce(hitDirection * 10f, ForceMode.Impulse);
                     destroyed = true;
                 }
                 else
