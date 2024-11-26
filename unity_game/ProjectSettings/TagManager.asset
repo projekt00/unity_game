@@ -9,6 +9,7 @@ TagManager:
   - Slot
   - Sandbag
   - Pickable
+  - Bag
   layers:
   - Default
   - TransparentFX
@@ -18,9 +19,9 @@ TagManager:
   - UI
   - Floor
   - PlaceZone
+  - Player
   - 
-  - 
-  - 
+  - Worki
   - 
   - 
   - 

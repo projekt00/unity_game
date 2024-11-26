@@ -1,3 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPicker : MonoBehaviour
@@ -9,6 +16,8 @@ public class ObjectPicker : MonoBehaviour
     private GameObject pickedObject; // Obiekt, który jest trzymany
     private UniversalObjectController objectController; // Kontroler interakcji obiektu
     private Collider pickedObjectCollider; // Referencja do komponentu Collider trzymanego obiektu
+
+    private int targetLayer = 10; // Numer warstwy, na której musz¹ znajdowaæ siê obiekty
 
     void Update()
     {
@@ -38,22 +47,26 @@ public class ObjectPicker : MonoBehaviour
             UniversalObjectController controller = hit.collider.GetComponent<UniversalObjectController>();
             if (controller != null && controller.interactionType == UniversalObjectController.InteractionType.Clickable)
             {
-                // Sprawdzamy, czy obiekt nie jest ju¿ podniesiony
-                if (pickedObject == null)
+                // Sprawdzamy, czy obiekt znajduje siê w wymaganej warstwie (10)
+                if (hit.collider.gameObject.layer == targetLayer)
                 {
-                    pickedObject = hit.collider.gameObject;
-                    objectController = controller;
+                    // Sprawdzamy, czy obiekt nie jest ju¿ podniesiony
+                    if (pickedObject == null)
+                    {
+                        pickedObject = hit.collider.gameObject;
+                        objectController = controller;
 
-                    // Wy³¹czamy fizykê i kolizje obiektu
-                    Rigidbody rb = pickedObject.GetComponent<Rigidbody>();
-                    if (rb != null)
-                    {
-                        rb.isKinematic = true;
-                    }
-                    pickedObjectCollider = pickedObject.GetComponent<Collider>();
-                    if (pickedObjectCollider != null)
-                    {
-                        pickedObjectCollider.enabled = false;
+                        // Wy³¹czamy fizykê i kolizje obiektu
+                        Rigidbody rb = pickedObject.GetComponent<Rigidbody>();
+                        if (rb != null)
+                        {
+                            rb.isKinematic = true;
+                        }
+                        pickedObjectCollider = pickedObject.GetComponent<Collider>();
+                        if (pickedObjectCollider != null)
+                        {
+                            pickedObjectCollider.enabled = false;
+                        }
                     }
                 }
             }
