@@ -20,8 +20,8 @@ public class Cork : MonoBehaviour
     }
     public void CheckWaterLevels(){
         foreach(GameObject room in interiorWaters){
-            if (room.transform.position.y + room.GetComponent<Renderer>().bounds.extents.y >=
-                exteriorWater.transform.position.y + exteriorWater.GetComponent<Renderer>().bounds.extents.y){
+            if (room.transform.position.y + room.GetComponent<Renderer>().bounds.extents.y * 2 >=
+                exteriorWater.transform.position.y + exteriorWater.GetComponent<Renderer>().bounds.extents.y * 2){
                     phase = 2;
                     DecreaseInteriorWater();
                     break;
@@ -38,7 +38,7 @@ public class Cork : MonoBehaviour
                     rb = gameObject.AddComponent<Rigidbody>();
                     rb.useGravity = true;
                 }
-                rb.AddForce(Vector3.up * 20f, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * 15f, ForceMode.Impulse);
             });           
         }
     }
@@ -47,5 +47,9 @@ public class Cork : MonoBehaviour
             room.GetComponent<InteriorFloodRegion>().neighbourRooms = new List<GameObject>();
             room.GetComponent<RisingWater>().DecreaseWater();
         }
+    }
+    public void TasksDone(){
+        allTasksDone = true;
+        GetComponent<UniversalObjectController>().mouseHoverInfo = "Take the plug out";
     }
 }

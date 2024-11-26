@@ -33,7 +33,7 @@ public class RisingWater : MonoBehaviour
     }
     IEnumerator DecreaseMarkers(){
         while (transform.position.y > initLevel){
-            waterRiseTween = transform.DOMove(transform.position - heightIncrement*10, interval).SetEase(Ease.Linear);
+            waterRiseTween = transform.DOMove(transform.position - heightIncrement*5, interval).SetEase(Ease.Linear);
             yield return new WaitForSeconds(interval);            
         }
     }
