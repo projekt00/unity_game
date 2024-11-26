@@ -20,8 +20,8 @@ public class Cork : MonoBehaviour
     }
     public void CheckWaterLevels(){
         foreach(GameObject room in interiorWaters){
-            if (room.transform.position.y + room.GetComponent<Renderer>().bounds.extents.y * 2 >=
-                exteriorWater.transform.position.y + exteriorWater.GetComponent<Renderer>().bounds.extents.y * 2){
+            if (room.transform.position.y + room.GetComponent<Renderer>().bounds.extents.y >=
+                exteriorWater.transform.position.y + exteriorWater.GetComponent<Renderer>().bounds.extents.y){
                     phase = 2;
                     DecreaseInteriorWater();
                     break;
